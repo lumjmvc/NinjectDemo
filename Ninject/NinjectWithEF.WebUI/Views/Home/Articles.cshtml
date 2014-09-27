@@ -1,0 +1,21 @@
+﻿@inherits NinjectWithEF.WebUI.Pages.ArticlesBasePage
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+<h2>Articles - @MessageService.Message</h2>
+
+<ul>
+    @foreach (var p in Model)
+    {
+        <li>@p.Title - @p.Content</li>
+    }
+</ul>
+
+
+
+
+
+
+

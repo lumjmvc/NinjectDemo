@@ -1,0 +1,57 @@
+﻿@using NinjectWithEF.Domain.Models
+@using NinjectWithEF.WebUI.Common.Helpers
+@model IEnumerable<NinjectWithEF.Domain.Models.Post>
+
+@{
+    ViewBag.Title = "Home Page";
+
+    var posts = ViewBag.Posts as IEnumerable<Post>; 
+}
+
+<div class="jumbotron">
+    <h1>Log Level: @ViewBag.LogLevel</h1>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Posts</h2>
+        <ul>
+           @foreach (var p in Model)
+           {
+               <li>@p.Title - @p.Content</li>
+           }
+            
+        </ul>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>This is the posts collection from the ProductFilter</h2>
+        
+        @if (posts != null)
+        {
+            <ul>
+                @foreach (var p in posts)
+                {
+                    <li>
+                        @p.Id @p.Title - @p.Content
+                        @*<p>@Html.ActionLink("Tamperproof Link", "Article", "Home", new { id = p.Id, h = HashingHelper.CreateTamperProofQueryString(p.Id.ToString()) }, null)</p>*@
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+    <div class="col-md-4">
+        <h2>Generate tamperproof query strings Link</h2>
+        @{
+            var dt = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
+        }
+
+        <p>@Html.ActionLink("Tamperproof Link", "Article", "Home", new { id = 7, expiry = dt, h = HashingHelper.CreateTamperProofQueryString("7" + dt) }, null)</p>
+        
+        @if (TempData["Message"] != null)
+        {
+            <p>@TempData["Message"]</p>
+        }
+    </div>
+</div>
