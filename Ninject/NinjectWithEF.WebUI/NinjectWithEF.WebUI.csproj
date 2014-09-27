@@ -276,6 +276,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201409230407242_intial-create.resx">
+      <DependentUpon>201409230407242_intial-create.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\NinjectWithEF.Domain.Abstract\NinjectWithEF.Domain.Abstract.csproj">
       <Project>{1804768a-7b3e-477d-9604-12640c24b7b3}</Project>
       <Name>NinjectWithEF.Domain.Abstract</Name>
@@ -288,11 +293,6 @@
       <Project>{06b01cf3-8317-431a-9883-24df3005ec78}</Project>
       <Name>NinjectWithEF.Domain.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201409230407242_intial-create.resx">
-      <DependentUpon>201409230407242_intial-create.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
